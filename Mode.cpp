@@ -1,0 +1,68 @@
+#include <iostream>
+#include <string>
+#include <string.h>
+#include <cstdlib>
+#include <set>
+#include <map>
+#include <vector>
+#include <algorithm>
+#include <iomanip>
+#include <sstream>
+#include <memory.h>
+#include <stdio.h>
+#include <ctime>
+#include <cmath>
+#include <cassert>
+
+using namespace std;
+ 
+#define LL long long
+#define U unsigned
+#define pnt pair<int,int>
+#define FOR(i,a,b) for (int i=(a); i<(b); ++i)
+#define MEMS(a,b) memset((a),(b),sizeof(a))
+#define MIN(a,b) ((a)<(b)?(a):(b))
+#define MAX(a,b) ((a)>(b)?(a):(b))
+#define ABS(a) (((a)>=(0))?(a):(-(a)))
+#define mp make_pair
+#define pb push_back
+#define ALL(a) a.begin(),a.end()
+#define FI(i,b) FOR(i,0,b)
+#define V(t) vector < t >
+#define sz size()
+#define MaxN 100005
+
+int occ[1000005];
+
+int T, N;
+
+int main()
+{
+    scanf("%d", &T);
+    while (T--)
+    {
+        scanf("%d", &N);   
+        int max = -1;
+        int maxNum = -1; 
+        memset(occ, 0, sizeof occ);
+        for (int i=1 ; i<=N ; i++)
+        {
+            int x;
+            scanf("%d", &x);
+            if (x > maxNum)
+               maxNum = x;
+               
+            occ[x] = occ[x] + 1;
+            if (occ[x] > max)
+                max = occ[x];    
+        }
+    
+        for (int i=maxNum ; i>=1 ; i--)
+        {
+            if (occ[i] == max)
+               printf("%d ", i);    
+        }
+        printf("\n");
+    }
+    return 0;    
+}
